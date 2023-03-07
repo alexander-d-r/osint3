@@ -16,33 +16,95 @@
 
 <style>
 
-    html, body
-    {
-        height: 100%;
-        margin:0;
-        padding:0;
+    .popup {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        justify-content: right;
     }
 
-    div {
-        position:relative;
-        height: 100%;
-        width:100%;
+    /* The actual popup */
+    .popup .popuptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: white;
+        color: black;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
     }
 
-    div img {
-        position:absolute;
-        top:0;
-        left:0;
-        right:0;
-        bottom:0;
-        margin:auto;
+    /* Popup arrow */
+    .popup .popuptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+    }
+
+    /* Toggle this class - hide and show the popup */
+    .popup .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+    }
+
+    /* Add animation (fade in the popup) */
+    @-webkit-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 
 </style>
 
-<body>
+<body style="text-align:center">
+
+    <br><br><br><br>
     
     <div><img src="osint3.jpeg" width="1024" height="700"></div>
+
+    <br><br>
+
+    <div class="popup" onclick="myFunction()">
+        <h1>hint</h1>
+        <span class="popuptext" id="myPopup">Hmm, G20 Indonesia 2022 diselenggarakan di provinsi mana ya? <span style="font-weight: bolder; text-decoration: underline;">Dan patung itu sepertinya khas sekali.</span>
+    </div>
+
+    <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
 
 </body>
 
